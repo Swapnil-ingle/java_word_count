@@ -1,9 +1,12 @@
+## Java Word Counter
+![alt text](https://raw.githubusercontent.com/Swapnil-ingle/java_word_count/master/docs/img/word_count_startup.png "Example word-counter")
+
 ## Problem Statement
 **Input:**
 1. Folder with many text files
 2. Each file can be very large
 3. There can be many files in the folder running into GBs
-E.g. lots of eBooks in .txt format
+> E.g. lots of eBooks in .txt format
 
 **Write a program to:**
 1. Count per unique word across all books
@@ -27,10 +30,10 @@ The shell script and batch script for running the program are generated in the d
 1. `cd $Java_Word_Count/build/install/word-counter/bin`
 
 **Linux:**
-> 2. `./tkids-merge-xls-script <ABSOLUTE-PATH-TO-INPUT-FILES>`
+> `./word-counter <ABSOLUTE-PATH-TO-INPUT-FILES>`
 
 **Windows:**
-> 2. `tkids-merge-xls-script <ABSOLUTE-PATH-TO-INPUT-FILES>`
+> `word-counter <ABSOLUTE-PATH-TO-INPUT-FILES>`
 
 **Note:**
 
@@ -71,4 +74,4 @@ The shell script and batch script for running the program are generated in the d
 **Upgrades:**
 > This reads the underlying files parallelly. This means the total time taken would be equal to maximum time required for one of the underlying file.
 
-**Note:** One more possible upgrade over this could be splitting large files (>750 MB) into sections and reading each section in separate thread.
+**Note:** One more possible upgrade over **_Iteration 3_** could be splitting large files (>750 MB) into sections and reading each section in separate thread.
