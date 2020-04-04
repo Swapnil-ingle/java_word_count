@@ -27,7 +27,7 @@
 
 The shell script and batch script for running the program are generated in the dir **$Java_Word_Count/build/install/word-counter/bin** after the plugin is setup.
 
-1. `cd $Java_Word_Count/build/install/word-counter/bin`
+> `cd $Java_Word_Count/build/install/word-counter/bin`
 
 **Linux:**
 > `./word-counter <ABSOLUTE-PATH-TO-INPUT-FILES>`
@@ -41,7 +41,9 @@ The shell script and batch script for running the program are generated in the d
 
 2. The shell script and batch script for the program are in $Java_Word_Count/build/install/word-counter/bin.
 
-## Iteration 1: Using Scanner Reader (Reading the file line-by-line)
+## Making of word-counter
+
+### Iteration 1: Using Scanner Reader (Reading the file line-by-line)
 
 **Performance Benchmark**
 * 170 MB --> 12 Secs (~200 MB)
@@ -53,25 +55,24 @@ The shell script and batch script for running the program are generated in the d
 
 > **Cons:** Reading line-by-line will cause much Disk IO overhead resulting in slower overall operation.
 
-## Iteration 2: Using Buffered Reader
+### Iteration 2: Using Buffered Reader
 
 **Performance Benchmark**
 * 400 MB --> 12 Secs (1 MB Chunk Size)
 * 1.1 GB --> 35 Secs (1 MB Chunk Size)
 * 2.0 GB --> 65 Secs (1 MB Chunk Size)
 
-> **Pros:** Reading n bytes from the file is efficient than reading line-by-line and causes lower Disk IO operation.
+> **Upgrade over last version:** Reading n bytes from the file is efficient than reading line-by-line and causes lower Disk IO operation.
 
 > **Cons:** This will still procedurally read all the files one-by-one. This means the total time taken would be Summation of time required to process each of the underlying file.
 
-## Iteration 3: Using Buffered Reader (With Multi-threaded Indexer)
+### Iteration 3: Using Buffered Reader (With multi-threaded Indexer)
 
 **Performance Benchmark**
 * 400 MB --> 10 Secs
 * 1.0 GB --> 30 Secs
 * 2.0 GB --> 65 Secs
 
-**Upgrades:**
-> This reads the underlying files parallelly. This means the total time taken would be equal to maximum time required for one of the underlying file.
+> **Upgrade over last version:** This reads the underlying files parallelly. This means the total time taken would be equal to maximum time required for one of the underlying file.
 
 **Note:** One more possible upgrade over **_Iteration 3_** could be splitting large files (>750 MB) into sections and reading each section in separate thread.
